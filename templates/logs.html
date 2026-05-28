@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+    background: #0a0f1c;
+    color: #00e6a8;
+    font-family: monospace;
+    text-align: center;
+}
+
+header {
+    padding: 15px;
+    border-bottom: 1px solid #00e6a8;
+}
+
+table {
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #00e6a8;
+    padding: 10px;
+}
+
+tr:hover {
+    background: #002b1a;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: #003d2a;
+}
+
+a {
+    color: #00e6a8;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>📊 Upload Logs</header>
+
+<table>
+<tr>
+<th>Time</th>
+<th>File</th>
+<th>Hash</th>
+</tr>
+
+{% for log in logs %}
+<tr>
+<td>{{ log.time }}</td>
+<td>
+    {{ log.file }}
+    {% if ".pdf" in log.file %}
+        <span class="badge">PDF</span>
+    {% elif ".jpg" in log.file or ".png" in log.file %}
+        <span class="badge">IMG</span>
+    {% endif %}
+</td>
+<td>{{ log.hash[:12] }}...</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/">⬅ Back</a>
+
+</body>
+</html>

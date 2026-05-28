@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Secure Upload</title>
+<style>
+body {
+    margin: 0;
+    background: #0a0f1c;
+    color: #00e6a8;
+    font-family: monospace;
+    font-size: 18px; /* 👈 increased */
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #00e6a8;
+    font-size: 26px;
+}
+
+.container {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.card {
+    display: inline-block;
+    padding: 40px;
+    border: 2px solid #00e6a8;
+    border-radius: 12px;
+    width: 400px;
+}
+
+input {
+    font-size: 16px;
+}
+
+button {
+    background: #00e6a8;
+    color: black;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00c98a;
+}
+
+a {
+    color: #00e6a8;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.success { color: #00ff9f; font-weight: bold; }
+.error { color: red; font-weight: bold; }
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<header>🛡 Cyber Secure Upload System</header>
+
+<div class="container">
+    <div class="card">
+        <h3>Upload File</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file"><br><br>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if message %}
+            {% if "Uploaded" in message %}
+                <p class="success">{{ message }}</p>
+            {% else %}
+                <p class="error">{{ message }}</p>
+            {% endif %}
+        {% endif %}
+
+        <br>
+        <a href="/logs">📊 Logs</a>
+        <a href="/verify">🔍 Verify</a>
+    </div>
+</div>
+
+<footer>SHA-256 • Secure Upload • Flask</footer>
+
+</body>
+</html>

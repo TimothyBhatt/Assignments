@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+    background: #0a0f1c;
+    color: #00e6a8;
+    font-family: monospace;
+    text-align: center;
+}
+
+header {
+    padding: 15px;
+    border-bottom: 1px solid #00e6a8;
+}
+
+.card {
+    margin-top: 80px;
+    display: inline-block;
+    padding: 30px;
+    border: 1px solid #00e6a8;
+    border-radius: 10px;
+    width: 360px;
+}
+
+button {
+    background: #00e6a8;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.success { color: #00ff9f; }
+.error { color: red; }
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background: #002b1a;
+}
+
+a {
+    color: #00e6a8;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔍 File Verification</header>
+
+<div class="card">
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file"><br><br>
+        <button type="submit">Verify</button>
+    </form>
+
+    {% if result %}
+        {% if "original" in result %}
+            <p class="success">{{ result }}</p>
+        {% else %}
+            <p class="error">{{ result }}</p>
+        {% endif %}
+    {% endif %}
+
+    <br>
+    <a href="/">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
